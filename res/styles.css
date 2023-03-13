@@ -282,7 +282,7 @@ body {
   text-align: left;
 }
 
-.iteration .droparea.drop-before-end {
+.iteration .drop-iteration {
   margin: 0 !important;
   margin-right: -5px !important;
   margin-bottom: -5px !important;
@@ -297,10 +297,10 @@ body {
 
 .repeatwhile textarea {
   text-align: left;
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
-.repeatwhile .droparea.drop-before-end {
+.repeatwhile .drop-repeatwhile {
   margin: 0 !important;
   margin-top: calc(-1rem - 5px) !important;
   margin-right: -5px !important;
@@ -317,23 +317,13 @@ body {
   padding: 0;
 }
 
-.begin-end .droparea.drop-before-end {
-  margin: 0;
-  margin-left: 1rem;
-  margin-right: -5px;
-  /*
+.begin-end .drop-begin-end {
   margin: 0 !important;
   margin-left: 1rem !important;
-  margin-right: -5px !important;
   border: 5px solid #7f7f7f !important;
-*/
+  margin-right: -5px !important;
 }
 
-.dblock .begin-end .droparea.drop-before-end {
-  margin-left: 1rem;
-  border: 5px solid #7f7f7f;
-  margin-right: -5px;
-}
 
 
 .begin-end textarea {
