@@ -318,11 +318,23 @@ body {
 }
 
 .begin-end .droparea.drop-before-end {
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: -5px;
+  /*
   margin: 0 !important;
   margin-left: 1rem !important;
   margin-right: -5px !important;
   border: 5px solid #7f7f7f !important;
+*/
 }
+
+.dblock .begin-end .droparea.drop-before-end {
+  margin-left: 1rem;
+  border: 5px solid #7f7f7f;
+  margin-right: -5px;
+}
+
 
 .begin-end textarea {
   text-align: left;
