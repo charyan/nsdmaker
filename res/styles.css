@@ -467,9 +467,7 @@ body {
 
 
 @media print {
-  .dblock {
-    min-width: 200px;
-  }
+  .dblock {}
 
   .menu {
     display: none;

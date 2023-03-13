@@ -450,6 +450,48 @@ function parallelDrop(ev) {
 
 }
 
+function setAllTextareaValuesToPlaceholder() {
+  let tareas = document.getElementsByTagName("textarea");
+
+  for (let i = 0; i < tareas.length; ++i) {
+    if (tareas[i].value == '') {
+      tareas[i].value = tareas[i].placeholder;
+    }
+  }
+}
+
+function setAllTextareaValuesToEmptyIfNoValue() {
+  let tareas = document.getElementsByTagName("textarea");
+
+  for (let i = 0; i < tareas.length; ++i) {
+    if (tareas[i].value == tareas[i].placeholder) {
+      tareas[i].value = '';
+    }
+  }
+}
+
+function getImage() {
+  setAllTextareaValuesToPlaceholder();
+  html2canvas(document.querySelector("#rblock")).then(canvas => {
+    let rootElement = document.getElementById("rblock");
+
+    let filename = rootElement.querySelector("textarea").value;
+    if (filename === '') {
+      filename = "diagram";
+    }
+
+    var img = canvas.toDataURL("image/png");
+
+    var link = document.createElement('a');
+    link.download = filename + '.png';
+    link.href = img;
+
+    link.click();
+
+    setAllTextareaValuesToEmptyIfNoValue();
+  });
+}
+
 function setAllTriangles() {
   t = document.getElementsByClassName("triangles");
 
@@ -685,7 +727,11 @@ function printContent() {
   }
   instance.moveTo(0, 0);
   instance.zoomTo(0, 0, 0.5);
-  setTimeout(() => { window.print(); }, 1000);
+  setTimeout(() => {
+    window.print() = function() {
+      setAllTriangles();
+    };
+  }, 1000);
 }
 
 
