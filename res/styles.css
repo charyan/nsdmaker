@@ -1,0 +1,426 @@
+@font-face {
+  font-family: FreeSans;
+  src: url(fonts/FreeSans.woff);
+}
+
+* {
+  font-family: FreeSans, sans;
+  font-size: 24px;
+}
+
+a {
+  color: white;
+  font-size: 48;
+  margin-left: 2rem;
+}
+
+h1,
+h2,
+p {
+  user-select: none;
+}
+
+h2 {
+  text-align: center;
+  display: block;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 10px 0;
+  margin: 0 auto 20px;
+}
+
+h2:not(:first-child) {
+  margin-top: 2rem;
+}
+
+
+textarea {
+  max-width: 20vw;
+  width: 100%;
+}
+
+
+body {
+  margin: 0;
+  background-image: radial-gradient(#D7D7D7 20%, transparent 20%);
+  background-color: #FFFFFF;
+  background-position: 0 0, 50px 50px;
+  background-size: 20px 20px;
+  overflow: hidden;
+}
+
+.menu {
+  display: block;
+  padding: 1%;
+  background-color: #5171A5;
+  z-index: 10000;
+  position: sticky;
+}
+
+.menu p {
+  display: inline-block;
+  color: white;
+}
+
+#sidebar {
+  background-color: white;
+  border: 5px solid black;
+  width: 20%;
+  right: 0;
+  margin-left: auto;
+  position: fixed;
+  height: 100vh;
+  overflow-y: scroll;
+  top: 0;
+  z-index: 10000;
+}
+
+#sidebar .dblock {
+  position: static;
+  margin: 1rem 2rem;
+  display: block;
+}
+
+#sidebar .dblock textarea {
+  user-select: none;
+  point-events: none;
+}
+
+#sidebar .parallel {
+  width: 72%;
+}
+
+.dblock {
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 0 1rem 1rem 1rem;
+  display: inline-block;
+  border: 5px solid #7f7f7f;
+  width: fit-content;
+}
+
+
+.dblock:focus {
+  background-color: red;
+}
+
+.dblock input {
+  padding: 0.5rem;
+  border: none;
+  text-align: left;
+  border: 3px solid #FFFFFF00;
+  background-color: #FFFFFF00;
+  width: 100%;
+}
+
+
+.dblock input:focus {
+  outline: none;
+  border: 3px dashed black;
+}
+
+.dblock .dblock {
+  margin: -5px;
+  position: inherit;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  box-sizing: border-box;
+  border-color: #7f7f7f;
+  display: block;
+}
+
+#canvas {
+  min-width: 80%;
+  min-height: 100%;
+  background-color: transparent;
+}
+
+.droparea {
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 5px solid #7f7f7f;
+  min-height: 2em;
+  /* padding-bottom: 1rem; */
+}
+
+/* DROPAREA */
+.droparea.drop-before-begin {
+  /* margin: calc(-1rem - 5px) calc(-1rem - 5px) 0 calc(-1rem - 5px);
+  border: none;
+  min-height: 0; */
+  margin: -5px calc(-1rem - 5px);
+  height: calc(1rem + 5px);
+  padding: 0;
+  border: 0;
+  min-height: 0;
+}
+
+
+/* ------ BLOCK STYLE ------ */
+
+/* PROGRAM */
+
+.dblock.program {
+  margin-right: auto;
+  position: static;
+  display: block;
+  width: fit-content;
+  padding: 1rem;
+}
+
+
+.dblock textarea {
+  padding: 0.5rem;
+  border: none;
+  text-align: center;
+  border: 3px solid #FFFFFF00;
+  background-color: #FFFFFF00;
+  width: 100%;
+
+  box-sizing: border-box;
+  resize: none;
+
+  display: block;
+  margin: 0 auto;
+}
+
+.dblock textarea:focus {
+  outline: none;
+  border: 3px dashed black;
+}
+
+/* INSTRUCTION */
+.dblock.process {}
+
+/* DECISION */
+.decision {
+  padding: 0;
+}
+
+.decision .decision-branches {
+  display: flex;
+  widtH: 100%;
+}
+
+.decision .decision-branch {
+  /* width: 50%; */
+  display: inline-block;
+  /* min-width: 50%; */
+  min-height: 2rem;
+  box-sizing: border-box;
+  /* border-top: 5px solid #7f7f7f; */
+  border-bottom: none;
+  border-left: 2.5px solid #7f7f7f;
+  border-right: 2.5px solid #7f7f7f;
+  flex-shrink: 3;
+}
+
+
+
+.decision .decision-branch:first-child {
+  border-left: none;
+}
+
+.decision .decision-branch:last-child {
+  border-right: none;
+}
+
+
+.decision .decision-branches .decision-branch .dblock {
+  flex-direction: column;
+}
+
+
+
+.decision textarea {
+  text-align: center;
+}
+
+.decision textarea.condition {
+  display: block;
+  margin: 0 auto;
+  max-width: 15rem;
+  width: 20%;
+}
+
+.decision .decision-branch textarea:first-child {
+  /* max-width: 10vw; */
+  border-bottom: 5px solid #7f7f7f;
+}
+
+.decision .droparea.drop-before-begin {
+  margin: -5px;
+}
+
+.decision .decision-branches .decision-branch .droparea {
+  background-color: transparent;
+  border: none !important;
+  margin: 0 !important;
+}
+
+
+/* Iteration */
+.iteration {
+  padding: 0;
+  padding-left: 1rem;
+}
+
+.iteration textarea {
+  text-align: left;
+}
+
+.iteration .droparea.drop-before-end {
+  margin: 0 !important;
+  margin-right: -5px !important;
+  margin-bottom: -5px !important;
+  border: 5px solid #7f7f7f !important;
+}
+
+/* Repeat-While */
+.repeatwhile {
+  padding: 0;
+  padding-left: 1rem;
+}
+
+.repeatwhile textarea {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.repeatwhile .droparea.drop-before-end {
+  margin: 0 !important;
+  margin-top: calc(-1rem - 5px) !important;
+  margin-right: -5px !important;
+  margin-bottom: -5px !important;
+  border: 5px solid #7f7f7f !important;
+}
+
+.decision .repeatwhile .droparea.drop-before-end {
+  margin-top: calc(-1rem - 10px) !important;
+}
+
+/* BEGIN-END */
+.begin-end {
+  padding: 0;
+}
+
+.begin-end .droparea.drop-before-end {
+  margin: 0 !important;
+  margin-left: 1rem !important;
+  margin-right: -5px !important;
+  border: 5px solid #7f7f7f !important;
+}
+
+.begin-end textarea {
+  text-align: left;
+}
+
+
+/* PARALLEL PROCESSING */
+.parallel .decision-branches {
+  display: flex;
+  width: 100%;
+}
+
+.parallel .decision-branches .decision-branch {
+  flex: auto;
+  min-width: 20%;
+}
+
+.parallel .parallel-top,
+.parallel .parallel-bottom {
+  height: 2rem;
+  width: 100%;
+}
+
+.parallel .parallel-top {
+  margin-top: -1rem;
+  border-bottom: 5px solid #7f7f7f;
+}
+
+.parallel .parallel-bottom {
+  border-top: 5px solid #7f7f7f;
+}
+
+/* TRIANGLES */
+
+.triangles {
+  display: block;
+  width: 100%;
+  height: 2rem;
+  margin-top: -1rem;
+}
+
+.triangles div {}
+
+.triangles .trig1 {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 0px solid #7f7f7f;
+  border-right: 144px solid transparent;
+
+  border-bottom: 40px solid #7f7f7f;
+
+  position: relative;
+  top: 9px;
+}
+
+.triangles .trig2 {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 0px solid white;
+  border-right: 137px solid transparent;
+
+  border-bottom: 38px solid white;
+
+  position: relative;
+  top: 2px;
+  left: 0;
+}
+
+.triangles .trig3 {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-right: 0px solid #7f7f7f;
+  border-left: 144px solid transparent;
+
+  border-bottom: 40px solid #7f7f7f;
+
+  position: relative;
+  top: -32px;
+  left: 139px;
+}
+
+.triangles .trig4 {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-right: 0px solid white;
+  border-left: 137px solid transparent;
+
+  border-bottom: 38px solid white;
+
+  position: relative;
+  top: 3px;
+  left: -142px;
+}
+
+
+@media print {
+  .menu {
+    display: none;
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  body {
+    background: none;
+  }
+}

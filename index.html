@@ -1,0 +1,219 @@
+<!DOCYTPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NSD-Maker</title>
+    <link rel="stylesheet" href="res/styles.css">
+    <script src='js/panzoom/panzoom.min.js'></script>
+  </head>
+
+  <body>
+    <div class="menu">
+      <button accesskey="i" onclick="upload();"><u>I</u>mport File</button>
+      <button accesskey="d" onclick="save();"><u>D</u>ownload File</button>
+      <button accesskey="p" onclick="printContent();"><u>P</u>rint</button>
+      <button accesskey="r" onclick="removeElement();"><u>R</u>emove Element</button>
+      <button accesskey="c" onclick="centerCanvas();"><u>C</u>enter canvas</button>
+      <p>Press [<code>ALT</code>+<code>left-click</code> to pan], [<code>ALT</code>+<code>scroll</code> to zoom]</p>
+      <a href="https://en.wikipedia.org/wiki/Nassi%E2%80%93Shneiderman_diagram"> ? </a>
+    </div>
+
+
+    <div id="canvas">
+      <div id="rblock" class="dblock program">
+        <textarea rows="1" placeholder="Program" ondrop="return false;" oninput="textareaResize(event);"></textarea>
+        <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+      </div>
+
+    </div>
+
+    <div id="sidebar">
+
+      <h2>Process</h2>
+
+      <div class="dblock process" draggable="true" ondragstart="drag(event)">
+        <div class="droparea drop-before-begin" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <textarea rows="1" placeholder="Process" ondrop="return false;" oninput="textareaResize(event);"
+          ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          onfocusout="enableDraggableParent(event);"></textarea>
+      </div>
+
+      <h2>Decision</h2>
+
+      <div class="dblock decision" draggable="true" ondragstart="drag(event)">
+        <div class="droparea drop-before-begin" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <textarea rows="1" placeholder="Condition" ondrop="return false;" oninput="textareaResize(event);"
+          ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          onfocusout="enableDraggableParent(event);"></textarea>
+        <div class="triangles">
+          <div class="trig1">
+            <div class="trig2"></div>
+          </div>
+          <div class="trig3">
+            <div class="trig4"></div>
+          </div>
+        </div>
+        <div class="decision-branches">
+          <div class="decision-branch">
+            <textarea rows="1" placeholder="True" ondrop="return false;" oninput="textareaResize(event);"
+              ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+              onfocusout="enableDraggableParent(event);"></textarea>
+
+            <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            </div>
+          </div>
+          <div class="decision-branch">
+            <textarea rows="1" placeholder="False" ondrop="return false;" oninput="textareaResize(event);"
+              ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+              onfocusout="enableDraggableParent(event);"></textarea>
+            <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <h2>CASE Statement</h2>
+
+      <div class="dblock decision" draggable="true" ondragstart="drag(event)" ondrop="decisionDrop(event);">
+        <div class="droparea drop-before-begin" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <textarea rows="1" placeholder="Condition" ondrop="return false;" oninput="textareaResize(event);"
+          ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          onfocusout="enableDraggableParent(event);"></textarea>
+        <div class="triangles">
+          <div class="trig1">
+            <div class="trig2"></div>
+          </div>
+          <div class="trig3">
+            <div class="trig4"></div>
+          </div>
+        </div>
+        <div class="decision-branches">
+          <div class="decision-branch">
+            <textarea rows="1" placeholder="True" ondrop="return false;" oninput="textareaResize(event);"
+              ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+              onfocusout="enableDraggableParent(event);"></textarea>
+
+            <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            </div>
+          </div>
+          <div class="decision-branch">
+            <textarea rows="1" placeholder="False" ondrop="return false;" oninput="textareaResize(event);"
+              ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+              onfocusout="enableDraggableParent(event);"></textarea>
+            <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            </div>
+          </div>
+          <div class="decision-branch">
+            <textarea rows="1" placeholder="Default" ondrop="return false;" oninput="textareaResize(event);"
+              ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+              onfocusout="enableDraggableParent(event);"></textarea>
+            <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dblock decision-item" draggable="true" ondragstart="drag(event)">
+        <input type="text" class="dinput" placeholder="item" ondrop="return false;" />
+      </div>
+
+      <h2>Iteration</h2>
+
+      <div class="dblock iteration" draggable="true" ondragstart="drag(event)">
+        <div class="droparea drop-before-begin" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <textarea rows="1" placeholder="Condition" ondrop="return false;" oninput="textareaResize(event);"
+          ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          onfocusout="enableDraggableParent(event);"></textarea>
+        <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+      </div>
+
+      <h2>Repeat-While</h2>
+      <div class="dblock repeatwhile" draggable="true" ondragstart="drag(event)">
+        <div class="droparea drop-before-begin" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <textarea rows="1" placeholder="Condition" ondrop="return false;" oninput="textareaResize(event);"
+          ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          onfocusout="enableDraggableParent(event);"></textarea>
+      </div>
+
+
+
+      <h2>Begin-End</h2>
+      <div class="dblock begin-end" draggable="true" ondragstart="drag(event)">
+        <div class="droparea drop-before-begin" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <textarea rows="1" placeholder="Condition" ondrop="return false;" oninput="textareaResize(event);"
+          ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          onfocusout="enableDraggableParent(event);"></textarea>
+        <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <textarea rows="1" placeholder="Condition" ondrop="return false;" oninput="textareaResize(event);"
+          ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          onfocusout="enableDraggableParent(event);"></textarea>
+      </div>
+
+
+
+      <h2>Parallel Processing</h2>
+
+      <div class="dblock decision parallel" draggable="true" ondragstart="drag(event)" ondrop="parallelDrop(event);">
+        <div class="droparea drop-before-begin" ondrop="drop(event)" ondragover="allowDrop(event)"
+          ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+        </div>
+        <div class="parallel-top"></div>
+        <div class="decision-branches">
+          <div class="decision-branch">
+            <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            </div>
+          </div>
+          <div class="decision-branch">
+            <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            </div>
+          </div>
+          <div class="decision-branch">
+            <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+              ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+            </div>
+          </div>
+        </div>
+        <div class="parallel-bottom"></div>
+      </div>
+
+
+      <div class="dblock parallel-item" draggable="true" ondragstart="drag(event)">
+        <input type="text" class="dinput" placeholder="parallel item" ondrop="return false;" />
+      </div>
+    </div>
+  </body>
+
+  <script src="js/main.js"></script>
+
+  </html>
