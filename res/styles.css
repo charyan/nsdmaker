@@ -404,6 +404,11 @@ body {
   display: flex;
 }
 
+.dblock .begin-end .parallel .droparea.drop-before-end {
+  margin: 0;
+  border: 0;
+}
+
 /* TRIANGLES */
 
 .triangles {
