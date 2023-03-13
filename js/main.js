@@ -24,9 +24,9 @@
  */
 
 document.addEventListener('keydown', function(event) {
-    if(event.keyCode == 46) {
-      removeElement();
-    }
+  if (event.keyCode == 46) {
+    removeElement();
+  }
 });
 
 
@@ -247,17 +247,23 @@ function drop(ev) {
       newNode = target.lastChild;
     }
 
-    if (newNode.classList.contains("decision-item")) {
+    if (newNode.nodeName == "#text") {
+      setDropareaDefaultColor(newNode.parentElement);
       newNode.remove();
+    } else {
+      if (newNode.classList.contains("decision-item")) {
+        newNode.remove();
+      }
+
+      if (newNode.classList.contains("parallel-item")) {
+        newNode.remove();
+      }
+
+      if (target.classList.contains("decision")) {
+        setDecisionTriangle(target);
+      }
     }
 
-    if(newNode.classList.contains("parallel-item")) {
-      newNode.remove();
-    }
-
-    if (target.classList.contains("decision")) {
-      setDecisionTriangle(target);
-    }
 
     unselectAllElementsFromDroparea(target);
 
@@ -339,7 +345,7 @@ function parallelDrop(ev) {
 
     newNode.remove();
   }
-  
+
 }
 
 function setAllTriangles() {
@@ -542,9 +548,25 @@ function upload() {
     reader.readAsText(file, 'UTF-8');
     reader.onload = readerEvent => {
       applyRootElement(readerEvent.target.result);
+
+      t = document.getElementsByTagName("textarea");
+
+      for (let i = 0; i < t.length; ++i) {
+        if (isElementInRblock(t[i])) {
+          t[i].value = t[i].getAttribute("value");
+        }
+      }
     }
+
+
   }
+
+
   input.click();
+
+
+
+
 }
 
 function printContent() {
@@ -566,6 +588,8 @@ function textareaResize(ev) {
   var offset = ev.target.offsetHeight - ev.target.clientHeight;
   ev.target.style.height = 'auto';
   ev.target.style.height = ev.target.scrollHeight + offset + 'px';
+
+  ev.target.setAttribute("value", ev.target.value);
 }
 
 
