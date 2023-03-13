@@ -11,14 +11,14 @@
 
   <body>
     <div class="menu">
-      <button accesskey="i" onclick="upload();"><u>I</u>mport</button>
-      <button accesskey="d" onclick="save();"><u>D</u>ownload</button>
-      <button accesskey="p" onclick="printContent();"><u>P</u>rint</button>
-      <button accesskey="r" onclick="removeElement();"><u>R</u>emove</button>
-      <button accesskey="c" onclick="centerCanvas();"><u>C</u>enter canvas</button>
-      <button accesskey="z" onclick="undo();">Undo</button>
-      <button accesskey="y" onclick="redo();">Redo</button>
-      <button onclick="clearCanvas();">Clear</button>
+      <button accesskey="o" onclick="upload();"><b><u>O</u></b>pen</b></button>
+      <button accesskey="s" onclick="save();"><b><u>S</u></b>ave</b></button>
+      <button accesskey="p" onclick="printContent();"><b><u>P</u></b>rint</button>
+      <button onclick="removeElement();">Delete <b>[DEL]</b></button>
+      <button onclick="centerCanvas();">Center canvas <b>[^C]</b></button>
+      <button onclick="undo();">Undo <b>[^Z]</b></button>
+      <button onclick="redo();">Redo <b>[^Y]</b></button>
+      <button accesskey="l" onclick="clearCanvas();">C<b><u>l</u></b>ear</button>
       <p>Press [<code>ALT</code>+<code>left-click</code> to pan], [<code>ALT</code>+<code>scroll</code> to zoom]</p>
       <a href="https://github.com/charyan/nsdmaker"> ? </a>
     </div>

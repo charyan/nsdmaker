@@ -413,6 +413,10 @@ body {
 
 
 @media print {
+  .dblock {
+    min-width: 200px;
+  }
+
   .menu {
     display: none;
   }
