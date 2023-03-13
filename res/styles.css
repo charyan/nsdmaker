@@ -12,6 +12,7 @@ a {
   color: white;
   font-size: 48;
   margin-left: 2rem;
+  text-decoration: none;
 }
 
 h1,
@@ -52,7 +53,7 @@ body {
 
 .menu {
   display: block;
-  padding: 1%;
+  padding: 0.5rem 1rem;
   background-color: #5171A5;
   z-index: 10000;
   position: sticky;

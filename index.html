@@ -11,13 +11,16 @@
 
   <body>
     <div class="menu">
-      <button accesskey="i" onclick="upload();"><u>I</u>mport File</button>
-      <button accesskey="d" onclick="save();"><u>D</u>ownload File</button>
+      <button accesskey="i" onclick="upload();"><u>I</u>mport</button>
+      <button accesskey="d" onclick="save();"><u>D</u>ownload</button>
       <button accesskey="p" onclick="printContent();"><u>P</u>rint</button>
-      <button accesskey="r" onclick="removeElement();"><u>R</u>emove Element</button>
+      <button accesskey="r" onclick="removeElement();"><u>R</u>emove</button>
       <button accesskey="c" onclick="centerCanvas();"><u>C</u>enter canvas</button>
+      <button accesskey="z" onclick="undo();">Undo</button>
+      <button accesskey="y" onclick="redo();">Redo</button>
+      <button onclick="clearCanvas();">Clear</button>
       <p>Press [<code>ALT</code>+<code>left-click</code> to pan], [<code>ALT</code>+<code>scroll</code> to zoom]</p>
-      <a href="https://en.wikipedia.org/wiki/Nassi%E2%80%93Shneiderman_diagram"> ? </a>
+      <a href="https://github.com/charyan/nsdmaker"> ? </a>
     </div>
 
 

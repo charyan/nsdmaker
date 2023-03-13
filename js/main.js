@@ -23,10 +23,102 @@
  *
  */
 
+
+let undoList = [];
+let redoList = [];
+
+function undo() {
+  if (undoList.length == 0) {
+    return;
+  }
+
+  pushToRedo();
+  setFromUndo();
+}
+
+function printHistory() {
+  console.log("UNDO LIST", undoList);
+  console.log("REDO LIST", redoList);
+}
+
+function redo() {
+  if (redoList.length == 0) {
+    return;
+  }
+
+  pushToUndo();
+  setFromRedo();
+}
+
+function pushToUndo() {
+  let r = document.getElementById("rblock");
+  undoList.push(r.cloneNode(true));
+}
+
+function pushToRedo() {
+  let r = document.getElementById("rblock");
+  redoList.push(r.cloneNode(true));
+}
+
+function setFromUndo() {
+  let el = undoList[undoList.length - 1];
+  let or = document.getElementById("canvas");
+  or.innerHTML = '';
+  or.appendChild(el);
+
+  undoList.pop();
+
+  let dr = document.getElementById("rblock").lastElementChild;
+  if (dr.children.length == 0) {
+    setDropareaDefaultColor(dr);
+  }
+}
+
+function setFromRedo() {
+  let el = redoList[redoList.length - 1];
+  let or = document.getElementById("canvas");
+  or.innerHTML = '';
+  or.appendChild(el);
+
+  redoList.pop();
+}
+
+function clrCanvas() {
+  document.getElementById("rblock").getElementsByClassName("drop-before-end")[0].innerHTML = '';
+}
+
+function clearCanvas() {
+  undoList = [];
+  redoList = [];
+
+  if (confirm("Unsaved changes will be lost.")) {
+    clrCanvas();
+  }
+}
+
 document.addEventListener('keydown', function(event) {
-  if (event.keyCode == 46) {
+  if (event.code == "Delete") { // DELETE
     removeElement();
   }
+  if (event.ctrlKey && event.code === "KeyZ") { // CTRL Z
+    undo();
+  }
+  if (event.ctrlKey && event.code === "KeyY") { // CTRL Y
+    redo();
+  }
+  if (event.ctrlKey && event.code === "KeyO") { // CTRL O
+    upload();
+  }
+  if (event.ctrlKey && event.code === "KeyS") { // CTRL S
+    save();
+  }
+  if (event.ctrlKey && event.code === "KeyC") { // CTRL C
+    centerCanvas();
+  }
+  if (event.ctrlKey && event.code === "KeyP") { // CTRL P
+    printContent();
+  }
+
 });
 
 
@@ -37,9 +129,8 @@ var canvas = document.getElementById("canvas");
 let instance = panzoom(canvas, {
   maxZoom: 1,
   minZoom: 0.5,
-  bounds: true,
-  boundsPadding: 0.1,
   zoomDoubleClickSpeed: 1,
+  smoothScroll: false,
   beforeMouseDown: function(e) {
     // allow mouse-down panning only if altKey is down. Otherwise - ignore
     var shouldIgnore = !e.altKey;
@@ -223,6 +314,7 @@ function drop(ev) {
   }
   lastDrop = d;
 
+
   target = ev.target;
 
   let dbe = getDropBeforeEnd(ev.target);
@@ -233,6 +325,9 @@ function drop(ev) {
   if (target.classList.contains("droparea") && target.tagName != "input") {
     setDropareaDefaultColor(target);
     target.style.borderColor = "transparent";
+
+    redoList = [];
+    pushToUndo();
 
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
@@ -249,13 +344,16 @@ function drop(ev) {
 
     if (newNode.nodeName == "#text") {
       setDropareaDefaultColor(newNode.parentElement);
+      setFromUndo();
       newNode.remove();
     } else {
       if (newNode.classList.contains("decision-item")) {
+        setFromUndo();
         newNode.remove();
       }
 
       if (newNode.classList.contains("parallel-item")) {
+        setFromUndo();
         newNode.remove();
       }
 
@@ -267,11 +365,15 @@ function drop(ev) {
 
     unselectAllElementsFromDroparea(target);
 
+
+
   }
 
 
   unsetDBE(dbe);
   setAllTriangles();
+
+
 
 }
 
@@ -524,7 +626,14 @@ function save() {
 
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rootElement.outerHTML));
-  element.setAttribute('download', rootElement.querySelector("textarea").value + ".html");
+
+  let filename = rootElement.querySelector("textarea").value;
+  console.log(filename);
+
+  if (filename === '') {
+    filename = "diagram";
+  }
+  element.setAttribute('download', filename + ".html");
 
   element.style.display = 'none';
   document.body.appendChild(element);
@@ -538,6 +647,17 @@ function applyRootElement(content) {
   document.getElementById("canvas").innerHTML = content;
 }
 
+function applyTextareas() {
+
+  t = document.getElementsByTagName("textarea");
+
+  for (let i = 0; i < t.length; ++i) {
+    if (isElementInRblock(t[i])) {
+      t[i].value = t[i].getAttribute("value");
+    }
+  }
+}
+
 function upload() {
   var input = document.createElement('input');
   input.type = 'file';
@@ -548,14 +668,7 @@ function upload() {
     reader.readAsText(file, 'UTF-8');
     reader.onload = readerEvent => {
       applyRootElement(readerEvent.target.result);
-
-      t = document.getElementsByTagName("textarea");
-
-      for (let i = 0; i < t.length; ++i) {
-        if (isElementInRblock(t[i])) {
-          t[i].value = t[i].getAttribute("value");
-        }
-      }
+      applyTextareas();
     }
 
 
@@ -593,9 +706,6 @@ function textareaResize(ev) {
 }
 
 
-function info() {
-  document.getElementById("popup").style.display = "block";
-}
 
 /*
 dblocks = document.getElementsByClassName("dblock")
