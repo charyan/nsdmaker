@@ -267,8 +267,8 @@ body {
 
 .decision .decision-branches .decision-branch .droparea {
   background-color: transparent;
-  border: none !important;
-  margin: 0 !important;
+  border: none;
+  margin: 0;
 }
 
 
