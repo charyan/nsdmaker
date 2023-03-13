@@ -127,8 +127,8 @@ setAllTriangles();
 var canvas = document.getElementById("canvas");
 
 let instance = panzoom(canvas, {
-  maxZoom: 1,
-  minZoom: 0.5,
+  maxZoom: 2,
+  minZoom: 0.3,
   zoomDoubleClickSpeed: 1,
   smoothScroll: false,
   beforeMouseDown: function(e) {
