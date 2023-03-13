@@ -470,8 +470,41 @@ function setAllTextareaValuesToEmptyIfNoValue() {
   }
 }
 
+function hideParallelLines() {
+  let top = document.getElementsByClassName("parallel-top"); 
+  let bottom = document.getElementsByClassName("parallel-bottom"); 
+
+  for(let i = 0; i < top.length; ++i) {
+    top[i].querySelector("div:first-child").style.display = "none";
+    top[i].querySelector("div:last-child").style.display = "none";
+  }
+
+  for(let i = 0; i < bottom.length; ++i) {
+    bottom[i].querySelector("div:first-child").style.display = "none";
+    bottom[i].querySelector("div:last-child").style.display = "none";
+  }
+    
+}
+
+function showParallelLines() { 
+  let top = document.getElementsByClassName("parallel-top"); 
+  let bottom = document.getElementsByClassName("parallel-bottom"); 
+
+  for(let i = 0; i < top.length; ++i) {
+    top[i].querySelector("div:first-child").style.display = "block";
+    top[i].querySelector("div:last-child").style.display = "block";
+  }
+
+  for(let i = 0; i < bottom.length; ++i) {
+    bottom[i].querySelector("div:first-child").style.display = "block";
+    bottom[i].querySelector("div:last-child").style.display = "block";
+  }
+}
+
 function getImage() {
   setAllTextareaValuesToPlaceholder();
+  hideParallelLines();
+  
   html2canvas(document.querySelector("#rblock")).then(canvas => {
     let rootElement = document.getElementById("rblock");
 
@@ -489,6 +522,7 @@ function getImage() {
     link.click();
 
     setAllTextareaValuesToEmptyIfNoValue();
+    showParallelLines();
   });
 }
 
