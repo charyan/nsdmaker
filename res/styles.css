@@ -92,6 +92,11 @@ body {
   width: 72%;
 }
 
+#sidebar .parallel-item input,
+#sidebar .decision-item input {
+  text-align: center;
+}
+
 .dblock {
   position: absolute;
   background-color: white;
