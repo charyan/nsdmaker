@@ -669,17 +669,13 @@ function upload() {
     reader.onload = readerEvent => {
       applyRootElement(readerEvent.target.result);
       applyTextareas();
+      setAllTriangles();
     }
 
 
   }
 
-
   input.click();
-
-
-
-
 }
 
 function printContent() {
