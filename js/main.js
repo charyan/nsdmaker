@@ -97,7 +97,9 @@ function clearCanvas() {
 }
 
 document.addEventListener('keydown', function(event) {
-  if (event.code == "Delete") { // DELETE
+  if(event.ctrlKey && event.code == "Delete") {
+    clearCanvas();
+  } else if (event.code == "Delete") { // DELETE
     removeElement();
   }
   if (event.ctrlKey && event.code === "KeyZ") { // CTRL Z
@@ -114,7 +116,7 @@ document.addEventListener('keydown', function(event) {
     event.preventDefault();
     save();
   }
-  if (event.ctrlKey && event.code === "KeyA") { // CTRL C
+  if (event.ctrlKey && event.code === "KeyA") { // CTRL A
     event.preventDefault();
     centerCanvas();
   }
