@@ -392,6 +392,10 @@ function drop(ev) {
 }
 
 function decisionDrop(ev) {
+  if(!isElementInRblock(ev.target)) {
+    return;
+  }
+
   setDropareaDefaultColor(ev.target);
   unselectAllElementsFromDroparea(ev.target);
   unsetDBE(ev.target);
