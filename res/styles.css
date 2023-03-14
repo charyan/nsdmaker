@@ -361,7 +361,7 @@ body {
   height: 100%;
 }
 
-.parallel-top svg line {
+svg line {
   width: 100%;
 }
 
@@ -408,11 +408,16 @@ body {
 /* TRIANGLES */
 
 .triangles {
-  display: block;
+  /* display: block; */
   width: 100%;
   height: 2rem;
   margin-top: -1rem;
+  overflow: hidden;
+  display: flex;
 }
+
+.triangles svg,
+.triangles svg line {}
 
 .triangles div {}
 

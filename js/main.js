@@ -534,7 +534,15 @@ function setAllTriangles() {
   t = document.getElementsByClassName("triangles");
 
   for (let i = 0; i < t.length; ++i) {
-    setDecisionTriangle(t[i]);
+
+    let leftLine = t[i].lastElementChild;
+    let rightLine = t[i].firstElementChild;
+    let branches = t[i].nextElementSibling;
+    let lastBranch = t[i].nextElementSibling.lastElementChild;
+
+    let newLeftLineWidth = (lastBranch.clientWidth / branches.clientWidth) * 100;
+    leftLine.style.width = newLeftLineWidth + '%';
+    rightLine.style.width = (100 - newLeftLineWidth) + '%';
   }
 }
 
@@ -542,7 +550,12 @@ function setAllTrianglesZero() {
   t = document.getElementsByClassName("triangles");
 
   for (let i = 0; i < t.length; ++i) {
-    setDecisionTriangleZero(t[i]);
+
+    let leftLine = t[i].lastElementChild;
+    let rightLine = t[i].firstElementChild;
+
+    leftLine.style.width = 0 + '%';
+    rightLine.style.width = 0 + '%';
   }
 
 }
