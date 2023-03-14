@@ -477,31 +477,31 @@ function setAllTextareaValuesToEmptyIfNoValue() {
 }
 
 function hideParallelLines() {
-  let top = document.getElementsByClassName("parallel-top"); 
-  let bottom = document.getElementsByClassName("parallel-bottom"); 
+  let top = document.getElementsByClassName("parallel-top");
+  let bottom = document.getElementsByClassName("parallel-bottom");
 
-  for(let i = 0; i < top.length; ++i) {
+  for (let i = 0; i < top.length; ++i) {
     top[i].querySelector("div:first-child").style.display = "none";
     top[i].querySelector("div:last-child").style.display = "none";
   }
 
-  for(let i = 0; i < bottom.length; ++i) {
+  for (let i = 0; i < bottom.length; ++i) {
     bottom[i].querySelector("div:first-child").style.display = "none";
     bottom[i].querySelector("div:last-child").style.display = "none";
   }
-    
+
 }
 
-function showParallelLines() { 
-  let top = document.getElementsByClassName("parallel-top"); 
-  let bottom = document.getElementsByClassName("parallel-bottom"); 
+function showParallelLines() {
+  let top = document.getElementsByClassName("parallel-top");
+  let bottom = document.getElementsByClassName("parallel-bottom");
 
-  for(let i = 0; i < top.length; ++i) {
+  for (let i = 0; i < top.length; ++i) {
     top[i].querySelector("div:first-child").style.display = "block";
     top[i].querySelector("div:last-child").style.display = "block";
   }
 
-  for(let i = 0; i < bottom.length; ++i) {
+  for (let i = 0; i < bottom.length; ++i) {
     bottom[i].querySelector("div:first-child").style.display = "block";
     bottom[i].querySelector("div:last-child").style.display = "block";
   }
@@ -510,7 +510,7 @@ function showParallelLines() {
 function getImage() {
   setAllTextareaValuesToPlaceholder();
   hideParallelLines();
-  
+
   html2canvas(document.querySelector("#rblock")).then(canvas => {
     let rootElement = document.getElementById("rblock");
 
@@ -538,6 +538,32 @@ function setAllTriangles() {
   for (let i = 0; i < t.length; ++i) {
     setDecisionTriangle(t[i]);
   }
+}
+
+function setAllTrianglesZero() {
+  t = document.getElementsByClassName("triangles");
+
+  for (let i = 0; i < t.length; ++i) {
+    setDecisionTriangleZero(t[i]);
+  }
+
+}
+
+function setDecisionTriangleZero(newNode) {
+  tr = [
+    newNode.getElementsByClassName("trig1")[0],
+    newNode.getElementsByClassName("trig2")[0],
+    newNode.getElementsByClassName("trig3")[0],
+    newNode.getElementsByClassName("trig4")[0]
+  ];
+
+  tr[0].style.borderRightWidth = 0;
+
+  tr[1].style.borderRightWidth = 0;
+
+  tr[2].style.borderLeftWidth = 0;
+
+  tr[3].style.borderLeftWidth = 0;
 }
 
 function setDecisionTriangle(newNode) {
@@ -644,11 +670,16 @@ document.addEventListener("mousedown", (event) => {
 
 function removeElement() {
   if (selectedElement != null && isElementInRblock(selectedElement)) {
+    redoList = [];
+    pushToUndo();
     if (selectedElement.parentElement.children.length === 1) {
       setDropareaDefaultColor(selectedElement.parentElement);
     }
     selectedElement.remove();
     selectedElement = null;
+
+    setAllTrianglesZero();
+    setAllTriangles();
   }
 }
 
@@ -710,7 +741,6 @@ function save() {
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(rootElement.outerHTML));
 
   let filename = rootElement.querySelector("textarea").value;
-  console.log(filename);
 
   if (filename === '') {
     filename = "diagram";
