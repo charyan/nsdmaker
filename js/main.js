@@ -99,32 +99,32 @@ function clearCanvas() {
 document.addEventListener('keydown', function(event) {
   if(event.ctrlKey && event.code == "Delete") {
     clearCanvas();
-  } else if (event.code == "Delete") { // DELETE
+  } else if (event.key == "Delete") { // DELETE
     removeElement();
   }
-  if (event.ctrlKey && event.code === "KeyZ") { // CTRL Z
+  if (event.ctrlKey && event.key === "z") { // CTRL Z
     undo();
   }
-  if (event.ctrlKey && event.code === "KeyY") { // CTRL Y
+  if (event.ctrlKey && event.key === "y") { // CTRL Y
     redo();
   }
-  if (event.ctrlKey && event.code === "KeyO") { // CTRL O
+  if (event.ctrlKey && event.key === "o") { // CTRL O
     event.preventDefault();
     upload();
   }
-  if (event.ctrlKey && event.code === "KeyS") { // CTRL S
+  if (event.ctrlKey && event.key === "s") { // CTRL S
     event.preventDefault();
     save();
   }
-  if (event.ctrlKey && event.code === "KeyA") { // CTRL A
+  if (event.ctrlKey && event.key === "a") { // CTRL A
     event.preventDefault();
     centerCanvas();
   }
-  if (event.ctrlKey && event.code === "KeyP") { // CTRL P
+  if (event.ctrlKey && event.key === "p") { // CTRL P
     event.preventDefault();
     printContent();
   }
-  if (event.ctrlKey && event.code === "KeyE") { // CTRL E
+  if (event.ctrlKey && event.key === "e") { // CTRL E
     getImage();
   }
 
