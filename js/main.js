@@ -829,9 +829,8 @@ function printContent() {
   instance.moveTo(0, 0);
   instance.zoomTo(0, 0, 0.5);
   setTimeout(() => {
-    window.print() = function() {
-      setAllTriangles();
-    };
+    setAllTriangles();
+    window.print();
   }, 1000);
 }
 

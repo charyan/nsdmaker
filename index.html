@@ -135,7 +135,9 @@
     </div>
 
     <div class="dblock decision-item" draggable="true" ondragstart="drag(event)">
-      <input type="text" class="dinput" placeholder="Branch" ondrop="return false;" />
+      <textarea rows="1" placeholder="Branch" ondrop="return false;" oninput="textareaResize(event);"
+        ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+        onfocusout="enableDraggableParent(event);"></textarea>
     </div>
 
     <h2>Iteration</h2>
@@ -228,7 +230,9 @@
 
 
     <div class="dblock parallel-item" draggable="true" ondragstart="drag(event)">
-      <input type="text" class="dinput" placeholder="Parallel Block" ondrop="return false;" />
+      <textarea rows="1" placeholder="Parallel Block" ondrop="return false;" oninput="textareaResize(event);"
+        ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+        onfocusout="enableDraggableParent(event);"></textarea>
     </div>
   </div>
 </body>

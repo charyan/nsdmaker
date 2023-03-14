@@ -485,6 +485,10 @@ svg line {
 @media print {
   .dblock {}
 
+  textarea {
+    max-width: 100%;
+  }
+
   .menu {
     display: none;
   }
