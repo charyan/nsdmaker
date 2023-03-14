@@ -460,7 +460,7 @@ function parallelDrop(ev) {
     if (newNode.classList.contains("parallel-item")) {
       let lastBranch = parent.getElementsByClassName("decision-branches")[0].lastElementChild;
       let copy = lastBranch.cloneNode(true);
-      copy.innerHTML = '';
+      copy.firstElementChild.innerHTML = '';
       lastBranch.after(copy);
 
     }

@@ -349,7 +349,7 @@ body {
 
 .parallel .decision-branches .decision-branch {
   flex: auto;
-  min-width: 20%;
+  /* min-width: 20%; */
 }
 
 .parallel .parallel-top,
@@ -418,6 +418,14 @@ svg line {
 .dblock .begin-end .parallel .droparea.drop-before-end {
   margin: 0;
   border: 0;
+}
+
+.par-da {
+  min-width: 5vw;
+}
+
+.par-b {
+  width: 0
 }
 
 /* TRIANGLES */
