@@ -106,21 +106,22 @@ document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.code === "KeyY") { // CTRL Y
     redo();
   }
-  /*
   if (event.ctrlKey && event.code === "KeyO") { // CTRL O
+    event.preventDefault();
     upload();
   }
   if (event.ctrlKey && event.code === "KeyS") { // CTRL S
+    event.preventDefault();
     save();
   }
-  */
-  if (event.ctrlKey && event.code === "KeyC") { // CTRL C
+  if (event.ctrlKey && event.code === "KeyA") { // CTRL C
+    event.preventDefault();
     centerCanvas();
   }
-  /*
   if (event.ctrlKey && event.code === "KeyP") { // CTRL P
+    event.preventDefault();
     printContent();
-  }*/
+  }
   if (event.ctrlKey && event.code === "KeyE") { // CTRL E
     getImage();
   }
@@ -158,7 +159,6 @@ let origin = instance.getTransformOrigin();
 
 function centerCanvas() {
   instance.smoothMoveTo(0, 0);
-  instance.smoothZoom(0, 0, 0.5);
 }
 
 lastDrop = Date.now()

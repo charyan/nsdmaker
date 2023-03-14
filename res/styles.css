@@ -58,7 +58,7 @@ body {
 
 .menu {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   background-color: #5171A5;
   z-index: 10000;
   position: sticky;

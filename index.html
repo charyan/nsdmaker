@@ -12,16 +12,15 @@
 
 <body>
   <div class="menu">
-    <button accesskey="o" onclick="upload();"><b><u>O</u></b>pen</b></button>
-    <button accesskey="s" onclick="save();"><b><u>S</u></b>ave</b></button>
-    <button accesskey="p" onclick="printContent();"><b><u>P</u></b>rint</button>
+    <button onclick="upload();">Open<b>[^O]</b></button>
+    <button onclick="save();">Save<b>[^S]</b></button>
+    <button onclick="printContent();">Print[^P]</button>
     <button onclick="removeElement();">Delete <b>[DEL]</b></button>
-    <button onclick="centerCanvas();">Center canvas <b>[^C]</b></button>
+    <button onclick="centerCanvas();">Center canvas <b>[^A]</b></button>
     <button onclick="undo();">Undo <b>[^Z]</b></button>
     <button onclick="redo();">Redo <b>[^Y]</b></button>
     <button id="png" onclick="getImage();">Export PNG<b>[^E]</b></button>
-    <button accesskey="l" onclick="clearCanvas();">C<b><u>l</u></b>ear</button>
-    <p>[ALT+left-click] [ALT+scroll]</p>
+    <button onclick="clearCanvas();">Clear<b>[^DEL]</b></button>
     <a href="https://github.com/charyan/nsdmaker" target="_blank"><img src="res/img/github-mark-white.png"></a>
   </div>
 

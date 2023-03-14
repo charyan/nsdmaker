@@ -11,12 +11,14 @@ firefox ./index.html
 ## Keyboard Shortcuts
 | Shortcut      | Action |
 | ------------- | ------------- |
-| <kbd>Delete</kbd> | Delete selected element |
-| <kbd>Ctrl</kbd> + <kbd>Z</kbd> | Undo |
-| <kbd>Ctrl</kbd> + <kbd>Y</kbd> | Redo |
-| <kbd>Ctrl</kbd> + <kbd>C</kbd> | Center canvas |
-| <kbd>Ctrl</kbd> + <kbd>E</kbd> | Export diagram to PNG |
 | <kbd>Alt</kbd> + <kbd>Left-Click</kbd> | Move the diagram |
 | <kbd>Alt</kbd> + <kbd>Scroll</kbd> | Zoom In/Out |
+| <kbd>Ctrl</kbd> + <kbd>A</kbd> | Center canvas |
+| <kbd>Ctrl</kbd> + <kbd>E</kbd> | Export diagram to PNG |
+| <kbd>Ctrl</kbd> + <kbd>O</kbd> | Open Diagram|
+| <kbd>Ctrl</kbd> + <kbd>S</kbd> | Save Diagram |
+| <kbd>Ctrl</kbd> + <kbd>Y</kbd> | Redo |
+| <kbd>Ctrl</kbd> + <kbd>Z</kbd> | Undo |
+| <kbd>Delete</kbd> | Delete selected element |
 
 
