@@ -1,6 +1,8 @@
 # NSD-Maker: A [Nassi–Shneiderman Diagrams](https://en.wikipedia.org/wiki/Nassi%E2%80%93Shneiderman_diagram) editor for the web.
 ![NSD-Maker screenshot](https://github.com/charyan/nsdmaker/raw/master/nsdmaker.png)
 
+# [Try it here](https://charyan.github.io/nsdmaker/)
+
 ## Download instructions
 ```bash
 git clone https://github.com/charyan/nsdmaker.git
