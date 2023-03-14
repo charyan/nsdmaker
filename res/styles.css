@@ -183,7 +183,7 @@ body {
 
 
 .dblock textarea {
-  padding: 0.5rem;
+  padding: 0.1rem;
   border: none;
   text-align: center;
   border: 3px solid #FFFFFF00;
@@ -272,7 +272,7 @@ body {
 }
 
 .decision .droparea.drop-before-begin {
-  margin: -5px;
+  margin: -5px !important;
 }
 
 .decision .decision-branches .decision-branch .droparea {
@@ -288,9 +288,6 @@ body {
   padding-left: 1rem;
 }
 
-.iteration textarea {
-  text-align: left;
-}
 
 .iteration .drop-iteration {
   margin: 0 !important;
@@ -305,10 +302,6 @@ body {
   padding-left: 1rem;
 }
 
-.repeatwhile textarea {
-  text-align: left;
-  padding-bottom: 1rem;
-}
 
 .repeatwhile .drop-repeatwhile {
   margin: 0 !important;
@@ -319,8 +312,9 @@ body {
 }
 
 .decision .repeatwhile .droparea.drop-before-end {
-  margin-top: calc(-1rem - 10px) !important;
+  /* margin-top: calc(-1rem - 10px) !important; */
 }
+
 
 /* BEGIN-END */
 .begin-end {
@@ -336,7 +330,9 @@ body {
 
 
 
-.begin-end .begin-end-ta {
+.begin-end .left-ta,
+.repeatwhile .left-ta,
+.iteration .left-ta {
   text-align: left;
 }
 
