@@ -212,6 +212,10 @@ function setDropareaSelectedColor(dr) {
     return;
   }
 
+  if (!isElementInRblock(dr)) {
+    return false;
+  }
+
   if (dr.classList.contains("droparea")) {
     dr.style.backgroundColor = "red";
     dr.style.borderColor = "red";
@@ -233,6 +237,10 @@ function setDropBeforeEndTransparent(dr) {
 
 function setDBE(dr) {
   if (dr == null) {
+    return false;
+  }
+
+  if (!isElementInRblock(dr)) {
     return false;
   }
 
@@ -299,6 +307,9 @@ function dragLeave(ev) {
 }
 
 function allowDrop(ev) {
+  if(!isElementInRblock(ev.target)) {
+    return;
+  }
   setDBE(ev.target);
 
   ev.preventDefault();
@@ -378,9 +389,6 @@ function drop(ev) {
 
   unsetDBE(dbe);
   setAllTriangles();
-
-
-
 }
 
 function decisionDrop(ev) {
@@ -840,7 +848,12 @@ function textareaResize(ev) {
   ev.target.setAttribute("value", ev.target.value);
 }
 
+function resetSidebar() {
+  let da = document.getElementById("sidebar").getElementsByClassName("droparea");
 
+  for (let i = 0; i < da.length; ++i) {
+  }
+}
 
 /*
 dblocks = document.getElementsByClassName("dblock")
