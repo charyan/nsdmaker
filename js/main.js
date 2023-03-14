@@ -507,27 +507,39 @@ function showParallelLines() {
   }
 }
 
+
 function getImage() {
-  setAllTextareaValuesToPlaceholder();
-  html2canvas(document.querySelector("#rblock")).then(canvas => {
-    let rootElement = document.getElementById("rblock");
+  document.getElementById("png").disabled = true;
+  instance.on('zoomend', function(e) {
+    setAllTextareaValuesToPlaceholder();
+    html2canvas(document.querySelector("#rblock")).then(canvas => {
+      let rootElement = document.getElementById("rblock");
 
-    let filename = rootElement.querySelector("textarea").value;
-    if (filename === '') {
-      filename = "diagram";
-    }
+      let filename = rootElement.querySelector("textarea").value;
+      if (filename === '') {
+        filename = "diagram";
+      }
 
-    var img = canvas.toDataURL("image/png");
+      var img = canvas.toDataURL("image/png");
 
-    var link = document.createElement('a');
-    link.download = filename + '.png';
-    link.href = img;
+      var link = document.createElement('a');
+      link.download = filename + '.png';
+      link.href = img;
 
-    link.click();
+      link.click();
 
-    setAllTextareaValuesToEmptyIfNoValue();
-    showParallelLines();
+      setAllTextareaValuesToEmptyIfNoValue();
+      /* showParallelLines(); */
+      document.getElementById("png").disabled = false;
+    });
   });
+
+
+  instance.moveTo(0, 0);
+  instance.smoothZoom(0, 0, 100);
+
+
+  instance.on('zoomend', function(e) { });
 }
 
 function setAllTriangles() {
