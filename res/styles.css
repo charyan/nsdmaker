@@ -110,6 +110,15 @@ body {
   display: inline-block;
   border: 5px solid #7f7f7f;
   width: fit-content;
+  min-width: 20vw;
+}
+
+#sidebar .dblock {
+  min-width: 0;
+}
+
+.droparea {
+  min-width: 5vw;
 }
 
 
