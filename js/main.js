@@ -84,7 +84,9 @@ function setFromRedo() {
 }
 
 function clrCanvas() {
-  document.getElementById("rblock").getElementsByClassName("drop-before-end")[0].innerHTML = '';
+  // document.getElementById("rblock").getElementsByClassName("drop-before-end")[0].innerHTML = '';
+  let canvas = document.getElementById("canvas");
+  canvas.innerHTML = '<div id="rblock" class="dblock program"><textarea rows="1" placeholder="Program" ondrop="return false;" oninput="textareaResize(event);"></textarea><div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)"></div></div>';
 }
 
 function clearCanvas() {
@@ -97,7 +99,7 @@ function clearCanvas() {
 }
 
 document.addEventListener('keydown', function(event) {
-  if(event.ctrlKey && event.code == "Delete") {
+  if (event.ctrlKey && event.code == "Delete") {
     clearCanvas();
   } else if (event.key == "Delete") { // DELETE
     removeElement();
@@ -309,7 +311,7 @@ function dragLeave(ev) {
 }
 
 function allowDrop(ev) {
-  if(!isElementInRblock(ev.target)) {
+  if (!isElementInRblock(ev.target)) {
     return;
   }
   setDBE(ev.target);
@@ -394,7 +396,7 @@ function drop(ev) {
 }
 
 function decisionDrop(ev) {
-  if(!isElementInRblock(ev.target)) {
+  if (!isElementInRblock(ev.target)) {
     return;
   }
 
