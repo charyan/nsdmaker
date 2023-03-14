@@ -354,6 +354,11 @@ body {
   display: flex;
 }
 
+.parallel-top svg,
+.parallel-bottom svg {
+  width: 50%;
+}
+
 .parallel .parallel-top div,
 .parallel .parallel-bottom div {
   overflow: hidden;
