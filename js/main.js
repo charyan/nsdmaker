@@ -106,17 +106,23 @@ document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.code === "KeyY") { // CTRL Y
     redo();
   }
+  /*
   if (event.ctrlKey && event.code === "KeyO") { // CTRL O
     upload();
   }
   if (event.ctrlKey && event.code === "KeyS") { // CTRL S
     save();
   }
+  */
   if (event.ctrlKey && event.code === "KeyC") { // CTRL C
     centerCanvas();
   }
+  /*
   if (event.ctrlKey && event.code === "KeyP") { // CTRL P
     printContent();
+  }*/
+  if (event.ctrlKey && event.code === "KeyE") { // CTRL E
+    getImage();
   }
 
 });

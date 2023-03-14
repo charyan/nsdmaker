@@ -15,6 +15,7 @@ firefox ./index.html
 | <kbd>Ctrl</kbd> + <kbd>Z</kbd> | Undo |
 | <kbd>Ctrl</kbd> + <kbd>Y</kbd> | Redo |
 | <kbd>Ctrl</kbd> + <kbd>C</kbd> | Center canvas |
+| <kbd>Ctrl</kbd> + <kbd>E</kbd> | Export diagram to PNG |
 | <kbd>Alt</kbd> + <kbd>Left-Click</kbd> | Move the diagram |
 | <kbd>Alt</kbd> + <kbd>Scroll</kbd> | Zoom In/Out |
 
