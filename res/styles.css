@@ -356,12 +356,18 @@ body {
 
 .parallel .parallel-top div,
 .parallel .parallel-bottom div {
+  overflow: hidden;
   width: 20%;
   height: 100%;
 }
 
+.parallel-top svg line {
+  width: 100%;
+}
+
 .parallel .parallel-top div:first-child {
-  background: linear-gradient(to top left, #fff calc(50% - 2px), #7f7f7f, #fff calc(50% + 2px));
+  /* background: linear-gradient(to top left, #fff calc(50% - 2px), #7f7f7f, #fff calc(50% + 2px)); */
+
 }
 
 .parallel .parallel-top div:nth-child(2) {
@@ -370,13 +376,13 @@ body {
 
 
 .parallel .parallel-top div:last-child {
-  background: linear-gradient(to top right, #fff calc(50% - 2px), #7f7f7f, #fff calc(50% + 2px));
+  /* background: linear-gradient(to top right, #fff calc(50% - 2px), #7f7f7f, #fff calc(50% + 2px)); */
 
 }
 
 
 .parallel .parallel-bottom div:first-child {
-  background: linear-gradient(to top right, #fff calc(50% - 2px), #7f7f7f, #fff calc(50% + 2px));
+  /* background: linear-gradient(to top right, #fff calc(50% - 2px), #7f7f7f, #fff calc(50% + 2px)); */
 }
 
 .parallel .parallel-bottom div:nth-child(2) {
@@ -385,7 +391,7 @@ body {
 
 
 .parallel .parallel-bottom div:last-child {
-  background: linear-gradient(to top left, #fff calc(50% - 2px), #7f7f7f, #fff calc(50% + 2px));
+  /* background: linear-gradient(to top left, #fff calc(50% - 2px), #7f7f7f, #fff calc(50% + 2px)); */
 
 }
 

@@ -509,8 +509,6 @@ function showParallelLines() {
 
 function getImage() {
   setAllTextareaValuesToPlaceholder();
-  hideParallelLines();
-
   html2canvas(document.querySelector("#rblock")).then(canvas => {
     let rootElement = document.getElementById("rblock");
 
