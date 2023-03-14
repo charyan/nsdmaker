@@ -100,33 +100,38 @@ function clearCanvas() {
 
 document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.code == "Delete") {
+    event.preventDefault();
     clearCanvas();
   } else if (event.key == "Delete") { // DELETE
+    event.preventDefault();
     removeElement();
   }
-  if (event.ctrlKey && event.key === "z") { // CTRL Z
+  if (event.ctrlKey && (event.key === "z" || event.key === "Z"))  { // CTRL Z
+    event.preventDefault();
     undo();
   }
-  if (event.ctrlKey && event.key === "y") { // CTRL Y
+  if (event.ctrlKey && (event.key === "y" || event.key === "Y")) { // CTRL Y
+    event.preventDefault();
     redo();
   }
-  if (event.ctrlKey && event.key === "o") { // CTRL O
+  if (event.ctrlKey && (event.key === "o" || event.key === "O")) { // CTRL O
     event.preventDefault();
     upload();
   }
-  if (event.ctrlKey && event.key === "s") { // CTRL S
+  if (event.ctrlKey && (event.key === "s" || event.key === "S")) { // CTRL S
     event.preventDefault();
     save();
   }
-  if (event.ctrlKey && event.key === "a") { // CTRL A
+  if (event.ctrlKey && (event.key === "a" || event.key === "A")) { // CTRL A
     event.preventDefault();
     centerCanvas();
   }
-  if (event.ctrlKey && event.key === "p") { // CTRL P
+  if (event.ctrlKey && (event.key === "p" || event.key === "P")) { // CTRL P
     event.preventDefault();
     printContent();
   }
-  if (event.ctrlKey && event.key === "e") { // CTRL E
+  if (event.ctrlKey && (event.key === "e" || event.key === "E")) { // CTRL E
+    event.preventDefault();
     getImage();
   }
 
