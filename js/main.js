@@ -423,7 +423,10 @@ function decisionDrop(ev) {
     if (newNode.classList.contains("decision-item")) {
       let lastBranch = parent.getElementsByClassName("decision-branches")[0].lastElementChild;
       let copy = lastBranch.cloneNode(true);
-      copy.value = '';
+      copy.lastElementChild.innerHTML = '';
+      copy.firstElementChild.value = '';
+      copy.firstElementChild.placeholder = "Default";
+      console.log(copy);
       lastBranch.after(copy);
 
     }
