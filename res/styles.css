@@ -212,7 +212,19 @@ body {
 
 .decision .decision-branches {
   display: flex;
-  widtH: 100%;
+  width: 100%;
+}
+
+.decision.decision-two .decision-branch {
+  width: 50%;
+}
+
+.decision-two-ta {
+  border-bottom: none !important;
+}
+
+.decision-two-da {
+  border-top: 5px solid #7f7f7f !important;
 }
 
 .decision .decision-branch {

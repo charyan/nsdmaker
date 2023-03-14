@@ -51,7 +51,7 @@
 
     <h2>Decision</h2>
 
-    <div class="dblock decision" draggable="true" ondragstart="drag(event)">
+    <div class="dblock decision decision-two" draggable="true" ondragstart="drag(event)">
       <div class="droparea drop-before-begin" ondrop="drop(event)" ondragover="allowDrop(event)"
         ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
       </div>
@@ -68,19 +68,19 @@
       </div>
       <div class="decision-branches">
         <div class="decision-branch">
-          <textarea rows="1" placeholder="True" ondrop="return false;" oninput="textareaResize(event);"
-            ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          <textarea class="decision-two-ta" rows="1" placeholder="True" ondrop="return false;"
+            oninput="textareaResize(event);" ondragstart="return false;" onfocusin="disableDraggableParent(event);"
             onfocusout="enableDraggableParent(event);"></textarea>
 
-          <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+          <div class="droparea drop-before-end decision-two-da" ondrop="drop(event)" ondragover="allowDrop(event)"
             ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
           </div>
         </div>
         <div class="decision-branch">
-          <textarea rows="1" placeholder="False" ondrop="return false;" oninput="textareaResize(event);"
-            ondragstart="return false;" onfocusin="disableDraggableParent(event);"
+          <textarea class="decision-two-ta" rows="1" placeholder="False" ondrop="return false;"
+            oninput="textareaResize(event);" ondragstart="return false;" onfocusin="disableDraggableParent(event);"
             onfocusout="enableDraggableParent(event);"></textarea>
-          <div class="droparea drop-before-end" ondrop="drop(event)" ondragover="allowDrop(event)"
+          <div class="droparea drop-before-end decision-two-da" ondrop="drop(event)" ondragover="allowDrop(event)"
             ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
           </div>
         </div>
