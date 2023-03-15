@@ -92,6 +92,7 @@ function clrCanvas() {
 }
 
 function clearCanvas() {
+  resetSelectedElement();
   undoList = [];
   redoList = [];
 
