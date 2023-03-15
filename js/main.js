@@ -533,6 +533,7 @@ function showParallelLines() {
 
 
 function getImage() {
+  resetSelectedElement();
   document.getElementById("png").disabled = true;
   instance.on('zoomend', function(e) {
     setAllTextareaValuesToPlaceholder();
@@ -838,6 +839,7 @@ function upload() {
 }
 
 function printContent() {
+  resetSelectedElement();
   if (selectedElement != null) {
     selectedElement.style.backgroundColor = "";
     selectedElement = null;
