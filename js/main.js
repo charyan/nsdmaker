@@ -28,6 +28,7 @@ let undoList = [];
 let redoList = [];
 
 function undo() {
+  resetSelectedElement();
   if (undoList.length == 0) {
     return;
   }
@@ -42,6 +43,7 @@ function printHistory() {
 }
 
 function redo() {
+  resetSelectedElement();
   if (redoList.length == 0) {
     return;
   }
